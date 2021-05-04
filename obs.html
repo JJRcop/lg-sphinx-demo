@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OBS plugin &#8212; Looking Glass B4 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Frequently Asked Questions" href="faq.html" />
+    <link rel="prev" title="Troubleshooting" href="troubleshooting.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="obs-plugin">
+<h1>OBS plugin<a class="headerlink" href="#obs-plugin" title="Permalink to this headline">¶</a></h1>
+<p>You can add a Looking Glass video feed
+to OBS as a video source with the included OBS plugin. This provides a
+lower-latency alternative to capturing the Looking Glass client window
+with a Screen or Window Capture source.</p>
+<p>This may help improve your viewers’ experience watching your stream, and
+allows you to use your host without them seeing.</p>
+<div class="section" id="build-instructions">
+<h2>Build Instructions<a class="headerlink" href="#build-instructions" title="Permalink to this headline">¶</a></h2>
+<p>The OBS plugin is included in the main source tree of Looking Glass. The
+building process is very similar to the
+<a class="reference internal" href="install.html#looking-glass-client"><span class="std std-ref">client’s</span></a>.</p>
+<div class="section" id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h3>
+<p>The OBS plugin requires the following extra dependencies alongside the
+<a class="reference internal" href="install.html#installing-build-dependencies"><span class="std std-ref">client’s build
+dependencies</span></a>.</p>
+<ul class="simple">
+<li><p>libobs-dev</p></li>
+</ul>
+<p>Please install this package or the equivalent in your package manager… code:: bash</p>
+<blockquote>
+<div><p>apt-get install libobs-dev</p>
+</div></blockquote>
+</div>
+<div class="section" id="building">
+<span id="obs-building"></span><h3>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h3>
+<p>These instructions are the same as when building the
+<a class="reference internal" href="install.html#client-building"><span class="std std-ref">client</span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir obs/build
+<span class="nb">cd</span> obs/build
+cmake ../
+make
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The resulting liblooking-glass-obs.so file should be placed in your OBS
+plugin directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/.config/obs-studio/plugins/looking-glass-obs/bin/64bit
+cp liblooking-glass-obs.so ~/.config/obs-studio/plugins/looking-glass-obs/bin/64bit
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>Once installed, you can select the <em>“Looking Glass Client”</em> source from
+the OBS sources menu. The configuration only requires the IVSHMEM file
+that is used by the VM, and this is pre-populated with the default
+filename for Looking Glass.</p>
+</div>
+<div class="section" id="open-broadcaster-software">
+<span id="id1"></span><h2>Open Broadcaster Software<a class="headerlink" href="#open-broadcaster-software" title="Permalink to this headline">¶</a></h2>
+<p>The plugin is made for OBS, an open source streaming and recording
+studio. Find out more at <a class="reference external" href="https://obsproject.com/">https://obsproject.com/</a></p>
+<p>It’s available under most distributions as <em>obs-studio</em> or just <em>obs</em>.</p>
+</div>
+<div class="section" id="screenshots">
+<h2>Screenshots<a class="headerlink" href="#screenshots" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="id2">
+<img alt="Adding the plugin as a video source" src="_images/Looking-Glass-OBS-Source-Add.png" />
+<p class="caption"><span class="caption-text">Adding the plugin as a video source</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id3">
+<img alt="Plugin configuration settings" src="_images/Looking-Glass-OBS-config.png" />
+<p class="caption"><span class="caption-text">Plugin configuration settings</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Looking Glass</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OBS plugin</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#build-instructions">Build Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#open-broadcaster-software">Open Broadcaster Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#screenshots">Screenshots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tech_faq.html">Technical FAQ</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="troubleshooting.html" title="previous chapter">Troubleshooting</a></li>
+      <li>Next: <a href="faq.html" title="next chapter">Frequently Asked Questions</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Geoffrey McRae, quantum, xyenne, and other contributors.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/obs.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
