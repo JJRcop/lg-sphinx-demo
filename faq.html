@@ -46,10 +46,9 @@ another Looking Glass client, but instead gives the captured frames to OBS.</p>
 <div class="section" id="why-is-my-ups-updates-per-second-so-low">
 <span id="id3"></span><h3>Why is my UPS (Updates Per Second) so low?<a class="headerlink" href="#why-is-my-ups-updates-per-second-so-low" title="Permalink to this headline">¶</a></h3>
 <p>There are several reasons why this can happen, the most common is your
-capture resolution. At the time of this writing, the windows capture
-methods struggle to capture high resolutions under certain
-circumstances, as a general rule of thumb anything greater than 1200p
-(1920x1200) starts to suffer from performance issues.</p>
+capture resolution, or refresh rate. At the time of this writing, the windows
+capture methods struggle to capture high resolutions under certain
+circumstances.</p>
 <p>Another cause can be how the game or application you are running is
 configured. Because of the way windows integrate with the WDM (Windows
 Desktop Manager) running applications in “Full Screen” mode may in some
@@ -85,7 +84,7 @@ to the guest nor will you get clipboard Synchronization support.</p>
 <span id="id5"></span><h3>Where is the host application for Linux?<a class="headerlink" href="#where-is-the-host-application-for-linux" title="Permalink to this headline">¶</a></h3>
 <p>The “Windows host application” is actually the display server, which
 runs in the guest VM. The only thing that needs to run in your Linux
-host OS is the `looking-glass-client` application</p>
+host OS is the `looking-glass-client` application.</p>
 </div>
 </div>
 <div class="section" id="mouse">
@@ -136,22 +135,8 @@ automatically</p></li>
 </div>
 <div class="section" id="the-mouse-doesn-t-stay-aligned-with-the-host">
 <span id="the-mouse-doesnt-stay-aligned-with-the-host"></span><h3>The mouse doesn’t stay aligned with the host.<a class="headerlink" href="#the-mouse-doesn-t-stay-aligned-with-the-host" title="Permalink to this headline">¶</a></h3>
-<p>This is due to windows mouse acceleration, it can be disabled by
-following one of these methods:</p>
-<ul class="simple">
-<li><p>Disabling pointer precision (Control Panel &gt; Mouse &gt; Pointer Options
-&gt; Uncheck Enhance pointer precision)</p></li>
-<li><p>By changing the acceleration behavior with the following registry
-magic:
-<a class="reference external" href="http://donewmouseaccel.blogspot.com.au/2010/03/markc-windows-7-mouse-acceleration-fix.html">http://donewmouseaccel.blogspot.com.au/2010/03/markc-windows-7-mouse-acceleration-fix.html</a>
-(Contrary to the title this works just fine on Windows 10)</p></li>
-</ul>
-<p>Some other things to try:</p>
-<ul class="simple">
-<li><p>Have you tried pressing Scroll Lock to toggle mouse capture mode?</p></li>
-<li><p>Try keeping the client window the same size as the guest’s
-resolution.</p></li>
-</ul>
+<p>This is intentional. The host’s mouse no longer interacts with your operating
+system, and is completely captured by Looking Glass.</p>
 </div>
 <div class="section" id="the-cursor-position-doesn-t-update-until-i-click">
 <span id="the-cursor-position-doesnt-update-until-i-click"></span><h3>The cursor position doesn’t update until I click<a class="headerlink" href="#the-cursor-position-doesn-t-update-until-i-click" title="Permalink to this headline">¶</a></h3>
@@ -241,7 +226,7 @@ this by adjusting the `Power Options` in the control panel.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, Geoffrey McRae, quantum, xyenne, and other contributors.
+      &copy;2021, Geoffrey McRae, quantum, xyene, and other contributors.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>

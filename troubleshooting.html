@@ -77,12 +77,6 @@ Tools driver. These are not the same.</strong></p>
 </li>
 </ul>
 </li>
-<li><p><strong>Are you using Wayland?</strong></p>
-<ul class="simple">
-<li><p>Clipboard functionality is not compatible with Wayland. If you are
-using it you need to disable it for the clipboard to work.</p></li>
-</ul>
-</li>
 </ul>
 </div>
 <div class="section" id="followed-installation-instructions-but-looking-glass-still-doesn-t-launch">
@@ -94,8 +88,6 @@ Looking Glass from running properly.</p>
 <h3>AppArmor<a class="headerlink" href="#apparmor" title="Permalink to this headline">¶</a></h3>
 <p>AppArmor is a security application that can prevent Looking Glass from
 running. How to add security exceptions may vary on your distribution:</p>
-<div class="section" id="debian-ubuntu">
-<h4>Debian(Ubuntu)<a class="headerlink" href="#debian-ubuntu" title="Permalink to this headline">¶</a></h4>
 <p>Start by opening the file <code class="docutils literal notranslate"><span class="pre">/etc/apparmor.d/abstractions/libvirt-qemu</span></code>.
 Now locate and edit the following lines to represent how they appear in
 the example:</p>
@@ -114,7 +106,6 @@ the example:</p>
 <p>Save, exit, and restart AppArmor:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sudo systemctl restart apparmor
 </pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -173,7 +164,7 @@ the example:</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, Geoffrey McRae, quantum, xyenne, and other contributors.
+      &copy;2021, Geoffrey McRae, quantum, xyene, and other contributors.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>

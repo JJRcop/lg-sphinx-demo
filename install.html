@@ -15,7 +15,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Troubleshooting" href="troubleshooting.html" />
-    <link rel="prev" title="Looking Glass documentation" href="index.html" />
+    <link rel="prev" title="Looking Glass B4 documentation" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -96,8 +96,11 @@ feature is disabled when running <a class="reference internal" href="#client-bui
 <p>Either visit the site at <a class="reference external" href="https://looking-glass.io/downloads">Looking Glass Download
 Page</a></p>
 <p>Or pull the lastest <strong>bleeding-edge version</strong> using the <strong>git</strong> command.</p>
-<p><strong>Note: If you are using the latest bleeding-edge from the master branch
-you MUST download/use the corresponding host application</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using the latest bleeding-edge from the master branch
+you MUST download/use the corresponding host application</p>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/gnif/LookingGlass.git
 </pre></div>
 </div>
@@ -113,7 +116,14 @@ cmake ../
 make
 </pre></div>
 </div>
-<p>NOTE: The most common compile error is related to backtrace support. This can be disabled by adding the following option to the cmake command: <strong>-DENABLE_BACKTRACE=0</strong>, however, if you disable this and need support for a crash please be sure to use gdb to obtain a backtrace manually or there is nothing that can be done to help you.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The most common compile error is related to backtrace support. This can be
+disabled by adding the following option to the cmake command:
+<strong>-DENABLE_BACKTRACE=0</strong>, however, if you disable this and need support for a
+crash please be sure to use gdb to obtain a backtrace manually or there is
+nothing that can be done to help you.</p>
+</div>
 <p>Should this all go well you should be left with the file
 <strong>looking-glass-client</strong>. Before you run the client you will first need
 to configure either Libvirt or Qemu (whichever you prefer) and then set
@@ -237,7 +247,7 @@ update the driver for the device “PCI standard RAM Controller” under the
 <p>A signed Windows 10 driver can be obtained from Red Hat for this device
 from the below address:</p>
 <p><a class="reference external" href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/upstream-virtio/">https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/upstream-virtio/</a></p>
-<p>Please note that you must obtain version 0.1.161 or later</p>
+<p>Please note that you must obtain version 0.1.161 or later.</p>
 <p>If the installation of the driver results in warnings or errors about
 driver signatures, ensure secure boot is turned off for the virtual
 machine bios/uefi.</p>
@@ -275,8 +285,8 @@ about to be stable, but haven’t passed validation.</p>
 <p>If your <strong>looking-glass-client</strong> was created by building from the <strong>master
 branch</strong> you have to pick the <strong>Bleeding Edge</strong> version.</p>
 </div>
-<p>Next, use <a class="reference external" href="7-zip.org/">7-Zip</a> to extract the zip archive using the commit
-hash for the password. Then, run the <code class="docutils literal notranslate"><span class="pre">looking-glass-host-setup.exe</span></code> installer
+<p>Next, extract the zip archive using the commit hash for the password.
+Then, run the <code class="docutils literal notranslate"><span class="pre">looking-glass-host-setup.exe</span></code> installer
 and click through it. By default, the installer will install a service that
 automatically starts the host application at boot. The installer can
 also be installed in silent mode with the <code class="docutils literal notranslate"><span class="pre">/S</span></code> switch. Other command
@@ -341,7 +351,7 @@ screen saver, and <code class="docutils literal notranslate"><span class="pre">-
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Looking Glass  documentation</a></li>
+      <li>Previous: <a href="index.html" title="previous chapter">Looking Glass B4 documentation</a></li>
       <li>Next: <a href="troubleshooting.html" title="next chapter">Troubleshooting</a></li>
   </ul></li>
 </ul>
@@ -361,7 +371,7 @@ screen saver, and <code class="docutils literal notranslate"><span class="pre">-
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, Geoffrey McRae, quantum, xyenne, and other contributors.
+      &copy;2021, Geoffrey McRae, quantum, xyene, and other contributors.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
