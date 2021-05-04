@@ -211,14 +211,12 @@ adjusted as per <a class="reference internal" href="#determining-memory"><span c
 <p>You will need to adjust the memory size to a value that is suitable for
 your desired maximum resolution using the following formula:</p>
 <p><code class="docutils literal notranslate"><span class="pre">width</span> <span class="pre">x</span> <span class="pre">height</span> <span class="pre">x</span> <span class="pre">4</span> <span class="pre">x</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">total</span> <span class="pre">bytes</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">total</span> <span class="pre">bytes</span> <span class="pre">/</span> <span class="pre">1024</span> <span class="pre">/</span> <span class="pre">1024</span> <span class="pre">=</span> <span class="pre">total</span> <span class="pre">megabytes</span> <span class="pre">+</span> <span class="pre">2</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">total</span> <span class="pre">bytes</span> <span class="pre">/</span> <span class="pre">1024</span> <span class="pre">/</span> <span class="pre">1024</span> <span class="pre">=</span> <span class="pre">total</span> <span class="pre">megabytes</span> <span class="pre">+</span> <span class="pre">10</span></code></p>
 <p>For example, for a resolution of 1920x1080 (1080p)</p>
 <p><code class="docutils literal notranslate"><span class="pre">1920</span> <span class="pre">x</span> <span class="pre">1080</span> <span class="pre">x</span> <span class="pre">4</span> <span class="pre">x</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">16,588,800</span> <span class="pre">bytes</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">16,588,800</span> <span class="pre">/</span> <span class="pre">1024</span> <span class="pre">/</span> <span class="pre">1024</span> <span class="pre">=</span> <span class="pre">15.82</span> <span class="pre">MB</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">17.82</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">16,588,800</span> <span class="pre">/</span> <span class="pre">1024</span> <span class="pre">/</span> <span class="pre">1024</span> <span class="pre">=</span> <span class="pre">15.82</span> <span class="pre">MB</span> <span class="pre">+</span> <span class="pre">10</span> <span class="pre">=</span> <span class="pre">25.82</span></code></p>
 <p>You must round this value up to the nearest power of two, which with the
 above example would be 32MB</p>
-<p>Note: This formula may be out of date. A 1440p display requires 64mb
-shared memory.</p>
 <p>The shared memory file will be located in /dev/shm/looking-glass and
 will need to be created on every boot otherwise it will have incorrect
 permissions. Looking glass will not be able to run unless it has
@@ -324,10 +322,12 @@ screen saver, and <code class="docutils literal notranslate"><span class="pre">-
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/icon-128x128.png" alt="Logo"/>
-            </a></p>
-<h1 class="logo"><a href="index.html">Looking Glass</a></h1>
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/icon-128x128.png" alt="Logo"/>
+    
+  </a>
+</p>
 
 
 
@@ -348,6 +348,9 @@ screen saver, and <code class="docutils literal notranslate"><span class="pre">-
 <li class="toctree-l1"><a class="reference internal" href="obs.html">OBS plugin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tech_faq.html">Technical FAQ</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Looking Glass team</a></li>
 </ul>
 
 <div class="relations">
@@ -374,7 +377,7 @@ screen saver, and <code class="docutils literal notranslate"><span class="pre">-
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, Geoffrey McRae, quantum, xyene, and other contributors.
+      &copy;2021, Looking Glass team.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
