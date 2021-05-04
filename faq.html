@@ -45,18 +45,16 @@
 another Looking Glass client, but instead gives the captured frames to OBS.</p>
 </div>
 <div class="section" id="why-is-my-ups-updates-per-second-so-low">
-<span id="id3"></span><h3>Why is my UPS (Updates Per Second) so low?<a class="headerlink" href="#why-is-my-ups-updates-per-second-so-low" title="Permalink to this headline">¶</a></h3>
-<p>There are several reasons why this can happen, the most common is your
-capture resolution, or refresh rate. At the time of this writing, the windows
-capture methods struggle to capture high resolutions under certain
-circumstances.</p>
+<span id="why-is-my-ups-so-low"></span><h3>Why is my UPS (Updates Per Second) so low?<a class="headerlink" href="#why-is-my-ups-updates-per-second-so-low" title="Permalink to this headline">¶</a></h3>
+<p>There are several reasons why this can happen, the most common are your
+capture resolution, or refresh rate. The windows capture methods currently
+struggle to capture high resolutions under certain circumstances.</p>
 <p>Another cause can be how the game or application you are running is
 configured. Because of the way windows integrate with the WDM (Windows
-Desktop Manager) running applications in “Full Screen” mode may in some
-cases cause a large performance penalty. Try switching to windowed
+Desktop Manager), running applications in “Full Screen” mode may—in some
+cases—cause a large performance penalty. Try switching to windowed
 full-screen mode, the difference in performance can be like night and
-day. Titles known to be affected by this are Fallout76, The BattleField
-Series and SCUM.</p>
+day.</p>
 <p>Some titles do some strange things at early initialization that cause
 capture performance issues. One such title is the Unigine Valley
 benchmark where the capture rate is limited to 1/2 the actual rate. For
@@ -65,13 +63,13 @@ task switch (alt+tab) in and out resolves the issue. This is not a
 Looking Glass bug.</p>
 </div>
 <div class="section" id="is-my-gpu-supported">
-<span id="id4"></span><h3>Is my GPU supported?<a class="headerlink" href="#is-my-gpu-supported" title="Permalink to this headline">¶</a></h3>
+<span id="id3"></span><h3>Is my GPU supported?<a class="headerlink" href="#is-my-gpu-supported" title="Permalink to this headline">¶</a></h3>
 <p>Your guest GPU almost certainly supports DXGI. Use DxDiag to confirm
 that you have support for WDDM 1.2 or greater.</p>
 <p>The server-side (guest) probing error “Capture is not possible,
 unsupported device or driver” indicates NVidia duplication has failed,
-not that DXGI has failed. You can make the error go away by specifying
-“-c DXGI”</p>
+not that DXGI has failed. You can fix the error by specifying
+<code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">DXGI</span></code></p>
 </div>
 <div class="section" id="why-do-i-need-spice-if-i-don-t-want-a-spice-display-device">
 <span id="why-do-i-need-spice-if-i-dont-want-a-spice-display-device"></span><h3>Why do I need Spice if I don’t want a Spice display device?<a class="headerlink" href="#why-do-i-need-spice-if-i-don-t-want-a-spice-display-device" title="Permalink to this headline">¶</a></h3>
@@ -79,10 +77,10 @@ not that DXGI has failed. You can make the error go away by specifying
 built in to provide some conveniences, but you can disable it with the
 “-s” argument.</p>
 <p>Note that without Spice, you will not be sending mouse/keyboard events
-to the guest nor will you get clipboard Synchronization support.</p>
+to the guest, nor will you get clipboard synchronization support.</p>
 </div>
 <div class="section" id="where-is-the-host-application-for-linux">
-<span id="id5"></span><h3>Where is the host application for Linux?<a class="headerlink" href="#where-is-the-host-application-for-linux" title="Permalink to this headline">¶</a></h3>
+<span id="id4"></span><h3>Where is the host application for Linux?<a class="headerlink" href="#where-is-the-host-application-for-linux" title="Permalink to this headline">¶</a></h3>
 <p>The “Windows host application” is actually the display server, which
 runs in the guest VM. The only thing that needs to run in your Linux
 host OS is the `looking-glass-client` application.</p>
@@ -91,12 +89,12 @@ host OS is the `looking-glass-client` application.</p>
 <div class="section" id="mouse">
 <h2>Mouse<a class="headerlink" href="#mouse" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="the-mouse-is-jumpy-slow-laggy-when-using-spice">
-<span id="id6"></span><h3>The mouse is jumpy, slow, laggy when using SPICE<a class="headerlink" href="#the-mouse-is-jumpy-slow-laggy-when-using-spice" title="Permalink to this headline">¶</a></h3>
+<span id="id5"></span><h3>The mouse is jumpy, slow, laggy when using SPICE<a class="headerlink" href="#the-mouse-is-jumpy-slow-laggy-when-using-spice" title="Permalink to this headline">¶</a></h3>
 <p>Please be sure to install the SPICE guest tools from
 <a class="reference external" href="https://www.spice-space.org/download.html#windows-binaries">https://www.spice-space.org/download.html#windows-binaries</a>.</p>
 </div>
 <div class="section" id="how-to-enable-clipboard-synchronization-via-spice">
-<span id="id7"></span><h3>How to enable clipboard synchronization via SPICE<a class="headerlink" href="#how-to-enable-clipboard-synchronization-via-spice" title="Permalink to this headline">¶</a></h3>
+<span id="id6"></span><h3>How to enable clipboard synchronization via SPICE<a class="headerlink" href="#how-to-enable-clipboard-synchronization-via-spice" title="Permalink to this headline">¶</a></h3>
 <p>Install the SPICE guest tools from
 <a class="reference external" href="https://www.spice-space.org/download.html#windows-binaries">https://www.spice-space.org/download.html#windows-binaries</a>.</p>
 <p>Choose only one of the settings below (the one that applies to your
@@ -110,16 +108,7 @@ configuration):</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Virt Manager GUI</p>
-<ul>
-<li><p>Open Machine Properties &gt; Add Hardware &gt; Channel</p></li>
-<li><p>Set Name to <code class="docutils literal notranslate"><span class="pre">com.redhat.spice.0</span></code> and Device Type to
-<code class="docutils literal notranslate"><span class="pre">Spice</span> <span class="pre">agent</span> <span class="pre">(spicevmc)</span></code> and click Finish</p></li>
-<li><p>No need to add VirtIO Serial device, it will be added
-automatically</p></li>
-</ul>
-</li>
-<li><p>libvirt using virsh</p>
+<li><p>libvirt</p>
 <ul>
 <li><p>Edit the VM using virsh <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">virsh</span> <span class="pre">edit</span> <span class="pre">VIRTUAL_MACHINE_NAME</span></code></p></li>
 <li><p>Paste the code from below right above (note the closing tag)</p></li>
@@ -149,7 +138,7 @@ does not support them.</p>
 </div>
 <div class="section" id="audio">
 <h2>Audio<a class="headerlink" href="#audio" title="Permalink to this headline">¶</a></h2>
-<p>Looking Glass does not handle audio at all, nor will it ever. The preferred
+<p>Looking Glass does not support audio routing. The preferred
 solution is to pass through QEMU’s audio to your host’s audio system.</p>
 <p>Another popular solution is to use
 <a class="reference external" href="https://github.com/duncanthrax/scream">Scream</a>, a virtual sound card which
@@ -160,13 +149,11 @@ the wiki: <a class="reference external" href="https://looking-glass.io/wiki/Usin
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="nvfbc-nvidia-capture-api-doesn-t-work">
 <span id="nvfbc-nvidia-capture-api-doesnt-work"></span><h3>NvFBC (NVIDIA Capture API) doesn’t work<a class="headerlink" href="#nvfbc-nvidia-capture-api-doesn-t-work" title="Permalink to this headline">¶</a></h3>
-<p>Unfortunately, NVIDIA deemed fit to only allow owners of “Professional
-Cards”, and their own software (ShadowPlay) the right to use the NVIDIA
-Capture API. There is little we can do about this other than to complain
-to NVIDIA.</p>
+<p>NvFBC is only supported on professional-grade GPUs, and will not function on
+consumer-grade cards like those from the GeForce series.</p>
 </div>
 <div class="section" id="the-screen-stops-updating-when-left-idle-for-a-time">
-<span id="id8"></span><h3>The screen stops updating when left idle for a time<a class="headerlink" href="#the-screen-stops-updating-when-left-idle-for-a-time" title="Permalink to this headline">¶</a></h3>
+<span id="id7"></span><h3>The screen stops updating when left idle for a time<a class="headerlink" href="#the-screen-stops-updating-when-left-idle-for-a-time" title="Permalink to this headline">¶</a></h3>
 <p>Windows is likely turning off the display to save power, you can prevent
 this by adjusting the `Power Options` in the control panel.</p>
 </div>
