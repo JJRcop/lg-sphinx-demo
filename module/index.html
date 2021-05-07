@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kernel Module &#8212; Looking Glass B4 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/icon.ico"/>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Frequently Asked Questions" href="../faq/" />
+    <link rel="prev" title="OBS plugin" href="../obs/" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../">
+    <img class="logo" src="../_static/icon-128x128.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obs/">OBS plugin</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Kernel Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#compiling-manual">Compiling (Manual)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compiling-installing-dkms">Compiling &amp; Installing (DKMS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tech_faq/">Technical FAQ</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../credits/">Looking Glass team</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../">Documentation overview</a><ul>
+      <li>Previous: <a href="../obs/" title="previous chapter">OBS plugin</a></li>
+      <li>Next: <a href="../faq/" title="next chapter">Frequently Asked Questions</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="kernel-module">
+<h1>Kernel Module<a class="headerlink" href="#kernel-module" title="Permalink to this headline">¶</a></h1>
+<p>This kernel module implements a basic interface to the IVSHMEM device
+for LookingGlass when using LookingGlass in VM-&gt;VM mode.</p>
+<p>Additionally, in VM-&gt;host mode, it can be used to generate a shared
+memory device on the host machine that supports dmabuf.</p>
+<div class="section" id="compiling-manual">
+<h2>Compiling (Manual)<a class="headerlink" href="#compiling-manual" title="Permalink to this headline">¶</a></h2>
+<p>Make sure you have your kernel headers installed first, on Debian/Ubuntu
+use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>apt-get install linux-headers-$(uname -r)
+</pre></div>
+</div>
+<p>Then simply run <code class="docutils literal notranslate"><span class="pre">make</span></code> and you’re done.</p>
+<div class="section" id="loading">
+<h3>Loading<a class="headerlink" href="#loading" title="Permalink to this headline">¶</a></h3>
+<p>For VM-&gt;VM mode, simply run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">insmod</span> <span class="n">kvmfr</span><span class="o">.</span><span class="n">ko</span>
+</pre></div>
+</div>
+<p>For VM-&gt;host mode with dmabuf, instead of creating a shared memory file,
+load this module with the parameter <code class="docutils literal notranslate"><span class="pre">static_size_mb</span></code>. For example, a
+128 MB shared memory device can be created with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">insmod</span> <span class="n">kvmfr</span><span class="o">.</span><span class="n">ko</span> <span class="n">static_size_mb</span><span class="o">=</span><span class="mi">128</span>
+</pre></div>
+</div>
+<p>Multiple devices can be created by separating the sizes with commas. For
+example, <code class="docutils literal notranslate"><span class="pre">static_size_mb=128,64</span></code> would create two kvmfr devices:
+<code class="docutils literal notranslate"><span class="pre">kvmfr0</span></code> would be 128 MB and <code class="docutils literal notranslate"><span class="pre">kvmfr1</span></code> would be 64 MB.</p>
+</div>
+</div>
+<div class="section" id="compiling-installing-dkms">
+<span id="id1"></span><h2>Compiling &amp; Installing (DKMS)<a class="headerlink" href="#compiling-installing-dkms" title="Permalink to this headline">¶</a></h2>
+<p>You can install this module into DKMS so that it persists across kernel
+upgrades. Simply run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dkms</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+<div class="section" id="loading-1">
+<span id="id2"></span><h3>Loading<a class="headerlink" href="#loading-1" title="Permalink to this headline">¶</a></h3>
+<p>For VM-&gt;VM, simply modprobe the module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modprobe</span> <span class="n">kvmfr</span>
+</pre></div>
+</div>
+<p>For VM-&gt;host with dmabuf, modprobe with the parameter
+<code class="docutils literal notranslate"><span class="pre">static_size_mb</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modprobe</span> <span class="n">kvmfr</span> <span class="n">static_size_mb</span><span class="o">=</span><span class="mi">128</span>
+</pre></div>
+</div>
+<p>Just like above, multiple devices can be created by separating the sizes
+with commas.</p>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>This will create the <code class="docutils literal notranslate"><span class="pre">/dev/kvmfr0</span></code> node that represents the KVMFR
+interface. To use the interface you need permission to access it by
+either creating a udev rule to ensure your user can read and write to
+it, or simply change its ownership manually, ie:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">chown</span> <span class="n">user</span><span class="p">:</span><span class="n">user</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">kvmfr0</span>
+</pre></div>
+</div>
+<p>An example udev rule, which you can put in
+<code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/99-kvmfr.rules</span></code>, is (replace <code class="docutils literal notranslate"><span class="pre">user</span></code> with your
+username):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;kvmfr&quot;</span><span class="p">,</span> <span class="n">OWNER</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="n">GROUP</span><span class="o">=</span><span class="s2">&quot;kvm&quot;</span><span class="p">,</span> <span class="n">MODE</span><span class="o">=</span><span class="s2">&quot;0660&quot;</span>
+</pre></div>
+</div>
+<p>Usage with looking glass is simple, you only need to specify the path to
+the device node, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">looking</span><span class="o">-</span><span class="n">glass</span><span class="o">-</span><span class="n">client</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">kvmfr0</span>
+</pre></div>
+</div>
+<p>You may also use a config file: <code class="docutils literal notranslate"><span class="pre">~/.looking-glass-client.ini</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">/etc/looking-glass-client.ini</span></code>.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[app]</span>
+<span class="na">shmFile</span><span class="o">=</span><span class="s">/dev/kvmfr0</span>
+</pre></div>
+</div>
+<div class="section" id="vm-host">
+<h3>VM-&gt;Host<a class="headerlink" href="#vm-host" title="Permalink to this headline">¶</a></h3>
+<p>In VM-&gt;host mode, use this device in place of the shared memory file.</p>
+<p>For example, with <code class="docutils literal notranslate"><span class="pre">qemu</span></code>, you would use the following arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">device</span> <span class="n">ivshmem</span><span class="o">-</span><span class="n">plain</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">shmem0</span><span class="p">,</span><span class="n">memdev</span><span class="o">=</span><span class="n">looking</span><span class="o">-</span><span class="n">glass</span>
+<span class="o">-</span><span class="nb">object</span> <span class="n">memory</span><span class="o">-</span><span class="n">backend</span><span class="o">-</span><span class="n">file</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">looking</span><span class="o">-</span><span class="n">glass</span><span class="p">,</span><span class="n">mem</span><span class="o">-</span><span class="n">path</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">kvmfr0</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">128</span><span class="n">M</span><span class="p">,</span><span class="n">share</span><span class="o">=</span><span class="n">yes</span>
+</pre></div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">size</span></code> argument must be the same size as what you passed
+to <code class="docutils literal notranslate"><span class="pre">static_size_mb</span></code> argument for the kernel module.</p>
+<div class="section" id="libvirt">
+<h4><code class="docutils literal notranslate"><span class="pre">libvirt</span></code><a class="headerlink" href="#libvirt" title="Permalink to this headline">¶</a></h4>
+<p>With <code class="docutils literal notranslate"><span class="pre">libvirt</span></code>, you can use the following XML block:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;qemu:commandline&gt;</span>
+  <span class="nt">&lt;qemu:arg</span> <span class="na">value=</span><span class="s">&#39;-device&#39;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;qemu:arg</span> <span class="na">value=</span><span class="s">&#39;ivshmem-plain,id=shmem0,memdev=looking-glass&#39;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;qemu:arg</span> <span class="na">value=</span><span class="s">&#39;-object&#39;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;qemu:arg</span> <span class="na">value=</span><span class="s">&#39;memory-backend-file,id=looking-glass,mem-path=/dev/kvmfr0,size=128M,share=yes&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/qemu:commandline&gt;</span>
+</pre></div>
+</div>
+<p>Remember to add
+<code class="docutils literal notranslate"><span class="pre">xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'</span></code> to the
+<code class="docutils literal notranslate"><span class="pre">&lt;domain&gt;</span></code>.</p>
+<p>On certain distros, running libvirt this way poses issues with apparmor
+and cgroups.</p>
+<p>For apparmor, in <code class="docutils literal notranslate"><span class="pre">/etc/apparmor.d/abstractions/libvirt-qemu</span></code>, append:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Looking Glass</span>
+<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">kvmfr0</span> <span class="n">rw</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>For cgroups, in <code class="docutils literal notranslate"><span class="pre">/etc/libvirt/qemu.conf</span></code>, uncomment the
+<code class="docutils literal notranslate"><span class="pre">cgroup_device_acl</span></code> block and add <code class="docutils literal notranslate"><span class="pre">/dev/kvmfr0</span></code> to the list. Then
+restart <code class="docutils literal notranslate"><span class="pre">libvirtd</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">libvirtd</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021, Looking Glass team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/module.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

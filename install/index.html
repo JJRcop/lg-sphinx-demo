@@ -51,6 +51,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../obs/">OBS plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/">Kernel Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tech_faq/">Technical FAQ</a></li>
 </ul>
@@ -363,6 +364,102 @@ automatically delete the file.</p>
 <span id="id15"></span><h2>Running the Client<a class="headerlink" href="#running-the-client" title="Permalink to this headline">¶</a></h2>
 <p>The client command is the binary file: <strong>looking-glass-client</strong>. This
 command should run after the Windows Host Application has started.</p>
+<div class="section" id="default-key-bindings">
+<span id="client-key-bindings"></span><h3>Default Key Bindings<a class="headerlink" href="#default-key-bindings" title="Permalink to this headline">¶</a></h3>
+<p>By default Looking Glass uses the <kbd class="kbd docutils literal notranslate">Scroll Lock</kbd> key as the escape key
+for commands as well as the input <kbd class="kbd docutils literal notranslate">capture</kbd> mode toggle, this can be
+changed using the <code class="docutils literal notranslate"><span class="pre">-m</span></code> switch if you desire a different key. Below are
+a list of current key bindings:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd></p></td>
+<td><p>Toggle capture mode</p></td>
+</tr>
+<tr class="row-odd"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">Q</kbd></p></td>
+<td><p>Quit</p></td>
+</tr>
+<tr class="row-even"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">R</kbd></p></td>
+<td><p>Rotate the output clockwise by 90° increments</p></td>
+</tr>
+<tr class="row-odd"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">I</kbd></p></td>
+<td><p>Spice keyboard &amp; mouse enable toggle</p></td>
+</tr>
+<tr class="row-even"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">S</kbd></p></td>
+<td><p>Toggle scale algorithm</p></td>
+</tr>
+<tr class="row-odd"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">D</kbd></p></td>
+<td><p>FPS display toggle</p></td>
+</tr>
+<tr class="row-even"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">F</kbd></p></td>
+<td><p>Full screen toggle</p></td>
+</tr>
+<tr class="row-odd"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">V</kbd></p></td>
+<td><p>Video stream toggle</p></td>
+</tr>
+<tr class="row-even"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">N</kbd></p></td>
+<td><p>Toggle night vision mode</p></td>
+</tr>
+<tr class="row-odd"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">F1</kbd></p></td>
+<td><p>Send <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Alt</kbd> + <kbd class="kbd docutils literal notranslate">F1</kbd> to the guest</p></td>
+</tr>
+<tr class="row-even"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">F2</kbd></p></td>
+<td><p>Send <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Alt</kbd> + <kbd class="kbd docutils literal notranslate">F2</kbd> to the guest</p></td>
+</tr>
+<tr class="row-odd"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">F3</kbd></p></td>
+<td><p>Send <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Alt</kbd> + <kbd class="kbd docutils literal notranslate">F3</kbd> to the guest</p></td>
+</tr>
+<tr class="row-even"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">F4</kbd></p></td>
+<td><p>Send <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Alt</kbd> + <kbd class="kbd docutils literal notranslate">F4</kbd> to the guest</p></td>
+</tr>
+<tr class="row-odd"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">F5</kbd></p></td>
+<td><p>Send <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Alt</kbd> + <kbd class="kbd docutils literal notranslate">F5</kbd> to the guest</p></td>
+</tr>
+<tr class="row-even"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">F6</kbd></p></td>
+<td><p>Send <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Alt</kbd> + <kbd class="kbd docutils literal notranslate">F6</kbd> to the guest</p></td>
+</tr>
+<tr class="row-odd"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">F7</kbd></p></td>
+<td><p>Send <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Alt</kbd> + <kbd class="kbd docutils literal notranslate">F7</kbd> to the guest</p></td>
+</tr>
+<tr class="row-even"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">F8</kbd></p></td>
+<td><p>Send <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Alt</kbd> + <kbd class="kbd docutils literal notranslate">F8</kbd> to the guest</p></td>
+</tr>
+<tr class="row-odd"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">F9</kbd></p></td>
+<td><p>Send <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Alt</kbd> + <kbd class="kbd docutils literal notranslate">F9</kbd> to the guest</p></td>
+</tr>
+<tr class="row-even"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">F10</kbd></p></td>
+<td><p>Send <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Alt</kbd> + <kbd class="kbd docutils literal notranslate">F10</kbd> to the guest</p></td>
+</tr>
+<tr class="row-odd"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">F11</kbd></p></td>
+<td><p>Send <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Alt</kbd> + <kbd class="kbd docutils literal notranslate">F11</kbd> to the guest</p></td>
+</tr>
+<tr class="row-even"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">F12</kbd></p></td>
+<td><p>Send <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Alt</kbd> + <kbd class="kbd docutils literal notranslate">F12</kbd> to the guest</p></td>
+</tr>
+<tr class="row-odd"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">Insert</kbd></p></td>
+<td><p>Increase mouse sensitivity in capture mode</p></td>
+</tr>
+<tr class="row-even"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">Del</kbd></p></td>
+<td><p>Decrease mouse sensitivity in capture mode</p></td>
+</tr>
+<tr class="row-odd"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">LWin</kbd></p></td>
+<td><p>Send <kbd class="kbd docutils literal notranslate">LWin</kbd> to the guest</p></td>
+</tr>
+<tr class="row-even"><td><p><kbd class="kbd docutils literal notranslate">ScrLk</kbd> + <kbd class="kbd docutils literal notranslate">RWin</kbd></p></td>
+<td><p>Send <kbd class="kbd docutils literal notranslate">RWin</kbd> to the guest</p></td>
+</tr>
+</tbody>
+</table>
+<p>You can also find this list at any time by holding down <kbd class="kbd docutils literal notranslate">Scroll Lock</kbd>.</p>
+</div>
 <div class="section" id="command-line-options">
 <span id="client-cli-options"></span><h3>Command Line Options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h3>
 <p>A full list of command line options is available with the <code class="docutils literal notranslate"><span class="pre">--help</span></code> or <code class="docutils literal notranslate"><span class="pre">-h</span></code>
@@ -380,6 +477,470 @@ state.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">looking-glass-client</span> <span class="pre">-f</span> <span class="pre">/dev/shm/my-lg-shmem</span></code> (short with parameter)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">looking-glass-client</span> <span class="pre">app:shmFile=/dev/shm/my-lg-shmem</span></code> (long with parameter)</p></li>
 </ul>
+</div>
+<div class="section" id="configuration-files">
+<span id="client-config-options-file"></span><h3>Configuration Files<a class="headerlink" href="#configuration-files" title="Permalink to this headline">¶</a></h3>
+<p>By default the application will look for and load the config files in
+the following locations</p>
+<ul class="simple">
+<li><p>/etc/looking-glass-client.ini</p></li>
+<li><p>~/.looking-glass-client.ini</p></li>
+</ul>
+<p>The format of this file is the commonly known INI format, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">win</span><span class="p">]</span>
+<span class="n">fullScreen</span><span class="o">=</span><span class="n">yes</span>
+
+<span class="p">[</span><span class="n">egl</span><span class="p">]</span>
+<span class="n">nvGain</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Command line arguments will override any options loaded from the config
+files.</p>
+</div>
+<div class="section" id="full-command-line-options">
+<span id="client-full-command-options"></span><h3>Full Command Line Options<a class="headerlink" href="#full-command-line-options" title="Permalink to this headline">¶</a></h3>
+<p>The following is a complete list of options accepted by this application</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 17%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Long</p></th>
+<th class="head"><p>Short</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>app:configFile</p></td>
+<td><p>-C</p></td>
+<td><p>NULL</p></td>
+<td><p>A file to read additional configuration from</p></td>
+</tr>
+<tr class="row-odd"><td><p>app:renderer</p></td>
+<td><p>-g</p></td>
+<td><p>auto</p></td>
+<td><p>Specify the renderer to use</p></td>
+</tr>
+<tr class="row-even"><td><p>app:license</p></td>
+<td><p>-l</p></td>
+<td><p>no</p></td>
+<td><p>Show the license for this application and then terminate</p></td>
+</tr>
+<tr class="row-odd"><td><p>app:cursorPollInterval</p></td>
+<td></td>
+<td><p>1000</p></td>
+<td><p>How often to check for a cursor update in microseconds</p></td>
+</tr>
+<tr class="row-even"><td><p>app:framePollInterval</p></td>
+<td></td>
+<td><p>1000</p></td>
+<td><p>How often to check for a frame update in microseconds</p></td>
+</tr>
+<tr class="row-odd"><td><p>app:allowDMA</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Allow direct DMA transfers if supported (see <cite>README.md</cite> in the <cite>module</cite> dir)</p></td>
+</tr>
+<tr class="row-even"><td><p>app:shmFile</p></td>
+<td><p>-f</p></td>
+<td><p>/dev/shm/looking-glass</p></td>
+<td><p>The path to the shared memory file, or the name of the kvmfr device to use, ie: kvmfr0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 6%" />
+<col style="width: 19%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Long</p></th>
+<th class="head"><p>Short</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>win:title</p></td>
+<td></td>
+<td><p>Looking Glass (client)</p></td>
+<td><p>The window title</p></td>
+</tr>
+<tr class="row-odd"><td><p>win:position</p></td>
+<td></td>
+<td><p>center</p></td>
+<td><p>Initial window position at startup</p></td>
+</tr>
+<tr class="row-even"><td><p>win:size</p></td>
+<td></td>
+<td><p>1024x768</p></td>
+<td><p>Initial window size at startup</p></td>
+</tr>
+<tr class="row-odd"><td><p>win:autoResize</p></td>
+<td><p>-a</p></td>
+<td><p>no</p></td>
+<td><p>Auto resize the window to the guest</p></td>
+</tr>
+<tr class="row-even"><td><p>win:allowResize</p></td>
+<td><p>-n</p></td>
+<td><p>yes</p></td>
+<td><p>Allow the window to be manually resized</p></td>
+</tr>
+<tr class="row-odd"><td><p>win:keepAspect</p></td>
+<td><p>-r</p></td>
+<td><p>yes</p></td>
+<td><p>Maintain the correct aspect ratio</p></td>
+</tr>
+<tr class="row-even"><td><p>win:forceAspect</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Force the window to maintain the aspect ratio</p></td>
+</tr>
+<tr class="row-odd"><td><p>win:dontUpscale</p></td>
+<td></td>
+<td><p>no</p></td>
+<td><p>Never try to upscale the window</p></td>
+</tr>
+<tr class="row-even"><td><p>win:shrinkOnUpscale</p></td>
+<td></td>
+<td><p>no</p></td>
+<td><p>Limit the window dimensions when dontUpscale is enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>win:borderless</p></td>
+<td><p>-d</p></td>
+<td><p>no</p></td>
+<td><p>Borderless mode</p></td>
+</tr>
+<tr class="row-even"><td><p>win:fullScreen</p></td>
+<td><p>-F</p></td>
+<td><p>no</p></td>
+<td><p>Launch in fullscreen borderless mode</p></td>
+</tr>
+<tr class="row-odd"><td><p>win:maximize</p></td>
+<td><p>-T</p></td>
+<td><p>no</p></td>
+<td><p>Launch window maximized</p></td>
+</tr>
+<tr class="row-even"><td><p>win:minimizeOnFocusLoss</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Minimize window on focus loss</p></td>
+</tr>
+<tr class="row-odd"><td><p>win:fpsMin</p></td>
+<td><p>-K</p></td>
+<td><p>-1</p></td>
+<td><p>Frame rate minimum (0 = disable - not recommended, -1 = auto detect)</p></td>
+</tr>
+<tr class="row-even"><td><p>win:showFPS</p></td>
+<td><p>-k</p></td>
+<td><p>no</p></td>
+<td><p>Enable the FPS &amp; UPS display</p></td>
+</tr>
+<tr class="row-odd"><td><p>win:ignoreQuit</p></td>
+<td><p>-Q</p></td>
+<td><p>no</p></td>
+<td><p>Ignore requests to quit (ie: Alt+F4)</p></td>
+</tr>
+<tr class="row-even"><td><p>win:noScreensaver</p></td>
+<td><p>-S</p></td>
+<td><p>no</p></td>
+<td><p>Prevent the screensaver from starting</p></td>
+</tr>
+<tr class="row-odd"><td><p>win:autoScreensaver</p></td>
+<td></td>
+<td><p>no</p></td>
+<td><p>Prevent the screensaver from starting when guest requests it</p></td>
+</tr>
+<tr class="row-even"><td><p>win:alerts</p></td>
+<td><p>-q</p></td>
+<td><p>yes</p></td>
+<td><p>Show on screen alert messages</p></td>
+</tr>
+<tr class="row-odd"><td><p>win:quickSplash</p></td>
+<td></td>
+<td><p>no</p></td>
+<td><p>Skip fading out the splash screen when a connection is established</p></td>
+</tr>
+<tr class="row-even"><td><p>win:rotate</p></td>
+<td></td>
+<td><p>0</p></td>
+<td><p>Rotate the displayed image (0, 90, 180, 270)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 5%" />
+<col style="width: 15%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Long</p></th>
+<th class="head"><p>Short</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>input:grabKeyboard</p></td>
+<td><p>-G</p></td>
+<td><p>yes</p></td>
+<td><p>Grab the keyboard in capture mode</p></td>
+</tr>
+<tr class="row-odd"><td><p>input:grabKeyboardOnFocus</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Grab the keyboard when focused</p></td>
+</tr>
+<tr class="row-even"><td><p>input:releaseKeysOnFocusLoss</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>On focus loss, send key up events to guest for all held keys</p></td>
+</tr>
+<tr class="row-odd"><td><p>input:escapeKey</p></td>
+<td><p>-m</p></td>
+<td><p>70 = KEY_SCROLLLOCK</p></td>
+<td><p>Specify the escape key, see &lt;linux/input-event-codes.h&gt; for valid values</p></td>
+</tr>
+<tr class="row-even"><td><p>input:ignoreWindowsKeys</p></td>
+<td></td>
+<td><p>no</p></td>
+<td><p>Do not pass events for the windows keys to the guest</p></td>
+</tr>
+<tr class="row-odd"><td><p>input:hideCursor</p></td>
+<td><p>-M</p></td>
+<td><p>yes</p></td>
+<td><p>Hide the local mouse cursor</p></td>
+</tr>
+<tr class="row-even"><td><p>input:mouseSens</p></td>
+<td></td>
+<td><p>0</p></td>
+<td><p>Initial mouse sensitivity when in capture mode (-9 to 9)</p></td>
+</tr>
+<tr class="row-odd"><td><p>input:mouseSmoothing</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Apply simple mouse smoothing when rawMouse is not in use (helps reduce aliasing)</p></td>
+</tr>
+<tr class="row-even"><td><p>input:rawMouse</p></td>
+<td></td>
+<td><p>no</p></td>
+<td><p>Use RAW mouse input when in capture mode (good for gaming)</p></td>
+</tr>
+<tr class="row-odd"><td><p>input:mouseRedraw</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Mouse movements trigger redraws (ignores FPS minimum)</p></td>
+</tr>
+<tr class="row-even"><td><p>input:autoCapture</p></td>
+<td></td>
+<td><p>no</p></td>
+<td><p>Try to keep the mouse captured when needed</p></td>
+</tr>
+<tr class="row-odd"><td><p>input:captureOnly</p></td>
+<td></td>
+<td><p>no</p></td>
+<td><p>Only enable input via SPICE if in capture mode</p></td>
+</tr>
+<tr class="row-even"><td><p>input:helpMenuDelay</p></td>
+<td></td>
+<td><p>200</p></td>
+<td><p>Show help menu after holding down the escape key for this many milliseconds</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 6%" />
+<col style="width: 10%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Long</p></th>
+<th class="head"><p>Short</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>spice:enable</p></td>
+<td><p>-s</p></td>
+<td><p>yes</p></td>
+<td><p>Enable the built in SPICE client for input and/or clipboard support</p></td>
+</tr>
+<tr class="row-odd"><td><p>spice:host</p></td>
+<td><p>-c</p></td>
+<td><p>127.0.0.1</p></td>
+<td><p>The SPICE server host or UNIX socket</p></td>
+</tr>
+<tr class="row-even"><td><p>spice:port</p></td>
+<td><p>-p</p></td>
+<td><p>5900</p></td>
+<td><p>The SPICE server port (0 = unix socket)</p></td>
+</tr>
+<tr class="row-odd"><td><p>spice:input</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Use SPICE to send keyboard and mouse input events to the guest</p></td>
+</tr>
+<tr class="row-even"><td><p>spice:clipboard</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Use SPICE to syncronize the clipboard contents with the guest</p></td>
+</tr>
+<tr class="row-odd"><td><p>spice:clipboardToVM</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Allow the clipboard to be syncronized TO the VM</p></td>
+</tr>
+<tr class="row-even"><td><p>spice:clipboardToLocal</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Allow the clipboard to be syncronized FROM the VM</p></td>
+</tr>
+<tr class="row-odd"><td><p>spice:scaleCursor</p></td>
+<td><p>-j</p></td>
+<td><p>yes</p></td>
+<td><p>Scale cursor input position to screen size when up/down scaled</p></td>
+</tr>
+<tr class="row-even"><td><p>spice:captureOnStart</p></td>
+<td></td>
+<td><p>no</p></td>
+<td><p>Capture mouse and keyboard on start</p></td>
+</tr>
+<tr class="row-odd"><td><p>spice:alwaysShowCursor</p></td>
+<td></td>
+<td><p>no</p></td>
+<td><p>Always show host cursor</p></td>
+</tr>
+<tr class="row-even"><td><p>spice:showCursorDot</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Use a “dot” cursor when the window does not have focus</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Long</p></th>
+<th class="head"><p>Short</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>egl:vsync</p></td>
+<td></td>
+<td><p>no</p></td>
+<td><p>Enable vsync</p></td>
+</tr>
+<tr class="row-odd"><td><p>egl:doubleBuffer</p></td>
+<td></td>
+<td><p>no</p></td>
+<td><p>Enable double buffering</p></td>
+</tr>
+<tr class="row-even"><td><p>egl:multisample</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Enable Multisampling</p></td>
+</tr>
+<tr class="row-odd"><td><p>egl:nvGainMax</p></td>
+<td></td>
+<td><p>1</p></td>
+<td><p>The maximum night vision gain</p></td>
+</tr>
+<tr class="row-even"><td><p>egl:nvGain</p></td>
+<td></td>
+<td><p>0</p></td>
+<td><p>The initial night vision gain at startup</p></td>
+</tr>
+<tr class="row-odd"><td><p>egl:cbMode</p></td>
+<td></td>
+<td><p>0</p></td>
+<td><p>Color Blind Mode (0 = Off, 1 = Protanope, 2 = Deuteranope, 3 = Tritanope)</p></td>
+</tr>
+<tr class="row-even"><td><p>egl:scale</p></td>
+<td></td>
+<td><p>0</p></td>
+<td><p>Set the scale algorithm (0 = auto, 1 = nearest, 2 = linear)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Long</p></th>
+<th class="head"><p>Short</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>opengl:mipmap</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Enable mipmapping</p></td>
+</tr>
+<tr class="row-odd"><td><p>opengl:vsync</p></td>
+<td></td>
+<td><p>no</p></td>
+<td><p>Enable vsync</p></td>
+</tr>
+<tr class="row-even"><td><p>opengl:preventBuffer</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Prevent the driver from buffering frames</p></td>
+</tr>
+<tr class="row-odd"><td><p>opengl:amdPinnedMem</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Use GL_AMD_pinned_memory if it is available</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Long</p></th>
+<th class="head"><p>Short</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>wayland:warpSupport</p></td>
+<td></td>
+<td><p>yes</p></td>
+<td><p>Enable cursor warping</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 </div>
 </div>
 </div>

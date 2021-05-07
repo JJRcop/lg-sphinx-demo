@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Looking Glass Host &#8212; Looking Glass B4 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/icon.ico"/>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Looking Glass team" href="../credits/" />
+    <link rel="prev" title="Technical FAQ" href="../tech_faq/" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../">
+    <img class="logo" src="../_static/icon-128x128.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obs/">OBS plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/">Kernel Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tech_faq/">Technical FAQ</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../tech_faq/#ivshmem-shared-ram">IVSHMEM/Shared RAM</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../credits/">Looking Glass team</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../">Documentation overview</a><ul>
+  <li><a href="../tech_faq/">Technical FAQ</a><ul>
+      <li>Previous: <a href="../tech_faq/" title="previous chapter">Technical FAQ</a></li>
+      <li>Next: <a href="../credits/" title="next chapter">Looking Glass team</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="looking-glass-host">
+<h1>Looking Glass Host<a class="headerlink" href="#looking-glass-host" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="building">
+<span id="host-building"></span><h2>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="for-windows-on-windows">
+<h3>For Windows on Windows<a class="headerlink" href="#for-windows-on-windows" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>download and install msys2 x86_64 from
+<a class="reference external" href="http://www.msys2.org/">http://www.msys2.org/</a> following the setup
+instructions provided</p></li>
+<li><p>execute <code class="docutils literal notranslate"><span class="pre">pacman</span> <span class="pre">-Fy</span></code> and then
+<code class="docutils literal notranslate"><span class="pre">pacman</span> <span class="pre">-Sy</span> <span class="pre">git</span> <span class="pre">make</span> <span class="pre">mingw-w64-x86_64-gcc</span> <span class="pre">mingw-w64-x86_64-cmake</span></code></p></li>
+<li><p>run “C:msys64mingw64.exe”</p></li>
+<li><p>checkout the project
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/gnif/LookingGlass.git</span></code></p></li>
+<li><p>configure the project and build it</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir LookingGlass/host/build
+<span class="nb">cd</span> LookingGlass/host/build
+cmake -G <span class="s2">&quot;MSYS Makefiles&quot;</span> ..
+make
+</pre></div>
+</div>
+</div>
+<div class="section" id="for-linux-on-linux">
+<h3>For Linux on Linux<a class="headerlink" href="#for-linux-on-linux" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir build
+<span class="nb">cd</span> build
+cmake ..
+make
+</pre></div>
+</div>
+</div>
+<div class="section" id="for-windows-cross-compiling-on-linux">
+<h3>For Windows cross compiling on Linux<a class="headerlink" href="#for-windows-cross-compiling-on-linux" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir build
+<span class="nb">cd</span> build
+cmake -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>../toolchain-mingw64.cmake ..
+make
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="building-the-windows-installer">
+<h2>Building the Windows installer<a class="headerlink" href="#building-the-windows-installer" title="Permalink to this headline">¶</a></h2>
+<p>Install NSIS compiler Build the host program, see above sections. Build
+installer with <code class="docutils literal notranslate"><span class="pre">makensis</span> <span class="pre">platform/Windows/installer.nsi</span></code> The resulting
+installer will be at <code class="docutils literal notranslate"><span class="pre">platform/Windows/looking-glass-host-setup.exe</span></code></p>
+</div>
+<div class="section" id="questions-and-answers">
+<span id="host-questions"></span><h2>Questions and Answers<a class="headerlink" href="#questions-and-answers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="where-is-the-log">
+<h3>Where is the log?<a class="headerlink" href="#where-is-the-log" title="Permalink to this headline">¶</a></h3>
+<p>The log file for the host application is located at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">ProgramData</span><span class="o">%</span>\<span class="n">Looking</span> <span class="n">Glass</span> <span class="p">(</span><span class="n">host</span><span class="p">)</span>\<span class="n">looking</span><span class="o">-</span><span class="n">glass</span><span class="o">-</span><span class="n">host</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>You can also find out where the file is by right clicking on the tray
+icon and selecting “Log File Location”.</p>
+<p>The log file for the looking glass service is located at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">ProgramData</span><span class="o">%</span>\<span class="n">Looking</span> <span class="n">Glass</span> <span class="p">(</span><span class="n">host</span><span class="p">)</span>\<span class="n">looking</span><span class="o">-</span><span class="n">glass</span><span class="o">-</span><span class="n">host</span><span class="o">-</span><span class="n">service</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>This is useful for troubleshooting errors related to the host
+application not starting.</p>
+<div class="section" id="high-priority-capture-using-dxgi-and-secure-desktop-uac-capture-support">
+<h4>High priority capture using DXGI and Secure Desktop (UAC) capture support<a class="headerlink" href="#high-priority-capture-using-dxgi-and-secure-desktop-uac-capture-support" title="Permalink to this headline">¶</a></h4>
+<p>By default Windows gives priority to the foreground application for any
+GPU work which causes issues with capture if the foreground application
+is consuming 100% of the available GPU resources. The looking glass host
+application is able to increase the kernel GPU thread to realtime
+priority which fixes this, but in order to do so it must run as the
+<code class="docutils literal notranslate"><span class="pre">SYSTEM</span></code> user account. To do this, Looking Glass needs to run as a
+service. This can be accomplished by either using the NSIS installer
+which will do this for you, or you can use the following command to
+Install the service manually:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">looking</span><span class="o">-</span><span class="n">glass</span><span class="o">-</span><span class="n">host</span><span class="o">.</span><span class="n">exe</span> <span class="n">InstallService</span>
+</pre></div>
+</div>
+<p>To remove the service use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">looking</span><span class="o">-</span><span class="n">glass</span><span class="o">-</span><span class="n">host</span><span class="o">.</span><span class="n">exe</span> <span class="n">UninstallService</span>
+</pre></div>
+</div>
+<p>This will also enable the host application to capture the secure desktop
+which includes things like the lock screen and UAC prompts.</p>
+</div>
+</div>
+<div class="section" id="why-does-this-version-require-administrator-privileges">
+<h3>Why does this version require Administrator privileges?<a class="headerlink" href="#why-does-this-version-require-administrator-privileges" title="Permalink to this headline">¶</a></h3>
+<p>This is intentional for several reasons.</p>
+<ol class="arabic simple">
+<li><p>NvFBC requires a system wide hook to correctly obtain the cursor
+position as NVIDIA decided to not provide this as part of the cursor
+updates.</p></li>
+<li><p>NvFBC requires administrator level access to enable the interface in
+the first place. (WIP)</p></li>
+<li><p>DXGI performance can be improved if we have this. (WIP)</p></li>
+</ol>
+</div>
+<div class="section" id="nvfbc-nvidia-frame-buffer-capture">
+<h3>NvFBC (NVIDIA Frame Buffer Capture)<a class="headerlink" href="#nvfbc-nvidia-frame-buffer-capture" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="why-can-t-i-compile-nvfbc-support-into-the-host">
+<h4>Why can’t I compile NvFBC support into the host?<a class="headerlink" href="#why-can-t-i-compile-nvfbc-support-into-the-host" title="Permalink to this headline">¶</a></h4>
+<p>You must download and install the NVidia Capture SDK. Please note that
+by doing so you will be agreeing to NVIDIA’s SDK License agreement.</p>
+<p><em>-Geoff</em></p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021, Looking Glass team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/host.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
