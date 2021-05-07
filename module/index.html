@@ -202,6 +202,25 @@ restart <code class="docutils literal notranslate"><span class="pre">libvirtd</s
 </div>
 </div>
 </div>
+<div class="section" id="systemd-modules-load">
+<span id="id3"></span><h3>systemd-modules-load<a class="headerlink" href="#systemd-modules-load" title="Permalink to this headline">¶</a></h3>
+<p>For convenience, you may load the KVMFR module when starting your computer.
+We can use the <code class="docutils literal notranslate"><span class="pre">systemd-modules-load.service(8)</span></code> service for this task.</p>
+<p>Create a file as <code class="docutils literal notranslate"><span class="pre">/etc/modules-load.d/kvmfr.conf</span></code> with the following
+contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#KVMFR Looking Glass module</span>
+<span class="n">kvmfr</span>
+</pre></div>
+</div>
+<p>This will now run the next time you start your machine.</p>
+<p>If you are running in VM-&gt;host mode, you must additionally add another file in
+<code class="docutils literal notranslate"><span class="pre">/etc/modprobe.d/kvmfr.conf</span></code> to properly set the size. It should have the
+following contents, while adjusting <code class="docutils literal notranslate"><span class="pre">static_size_mb</span></code> to your needs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#KVMFR Looking Glass module</span>
+<span class="n">options</span> <span class="n">kvmfr</span> <span class="n">static_size_mb</span><span class="o">=</span><span class="mi">128</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
