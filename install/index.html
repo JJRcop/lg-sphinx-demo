@@ -46,7 +46,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#looking-glass-client">Looking Glass Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#looking-glass-service-windows">Looking Glass Service (Windows)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#running-the-client">Running the Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a></li>
@@ -154,6 +154,13 @@ version</strong> with <code class="docutils literal notranslate"><span class="pr
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/gnif/LookingGlass.git
 </pre></div>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please only clone from Git if you’re a developer, and know what you’re
+doing. Looking Glass requires git submodules that must be setup and updated
+when building. Source code downloads from the website come bundled with the
+necessary submodules.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When using the latest bleeding-edge client version,
@@ -183,12 +190,6 @@ nothing that can be done to help you.</p>
 Before you run the client, you will first need
 to configure either libvirt, or QEMU (whichever you prefer) then set
 up the <strong>looking-glass-host</strong> service in your VM.</p>
-<p>You can run the client from the build directory, add the build directory to your
-path to call it from anywhere, or run this command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ln -s <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/looking-glass-client /usr/local/bin/
-</pre></div>
-</div>
-<p>from the build directory.</p>
 </div>
 </div>
 <div class="section" id="libvirt-configuration">
@@ -360,10 +361,16 @@ automatically delete the file.</p>
 </div>
 </div>
 </div>
-<div class="section" id="running-the-client">
-<span id="id15"></span><h2>Running the Client<a class="headerlink" href="#running-the-client" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="usage">
+<span id="client-usage"></span><h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>The client command is the binary file: <strong>looking-glass-client</strong>. This
 command should run after the Windows Host Application has started.</p>
+<p>You can run the client from the build directory, add the build directory to your
+path to call it from anywhere, or run this command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ln -s <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/looking-glass-client /usr/local/bin/
+</pre></div>
+</div>
+<p>from the build directory.</p>
 <div class="section" id="default-key-bindings">
 <span id="client-key-bindings"></span><h3>Default Key Bindings<a class="headerlink" href="#default-key-bindings" title="Permalink to this headline">¶</a></h3>
 <p>By default Looking Glass uses the <kbd class="kbd docutils literal notranslate">Scroll Lock</kbd> key as the escape key
