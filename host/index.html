@@ -91,15 +91,20 @@
 <div class="section" id="for-windows-on-windows">
 <h3>For Windows on Windows<a class="headerlink" href="#for-windows-on-windows" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li><p>download and install msys2 x86_64 from
+<li><p>Download and install msys2 x86_64 from
 <a class="reference external" href="http://www.msys2.org/">http://www.msys2.org/</a> following the setup
 instructions provided</p></li>
-<li><p>execute <code class="docutils literal notranslate"><span class="pre">pacman</span> <span class="pre">-Fy</span></code> and then
-<code class="docutils literal notranslate"><span class="pre">pacman</span> <span class="pre">-Sy</span> <span class="pre">git</span> <span class="pre">make</span> <span class="pre">mingw-w64-x86_64-gcc</span> <span class="pre">mingw-w64-x86_64-cmake</span></code></p></li>
-<li><p>run “C:msys64mingw64.exe”</p></li>
-<li><p>checkout the project
+<li><p>Run the MSYS2 shell.</p></li>
+<li><p>Download build dependencies with pacman</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pacman -Fy
+pacman -Sy git make mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Checkout the project
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/gnif/LookingGlass.git</span></code></p></li>
-<li><p>configure the project and build it</p></li>
+<li><p>Configure the project and build it</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir LookingGlass/host/build
 <span class="nb">cd</span> LookingGlass/host/build
@@ -109,8 +114,10 @@ make
 </div>
 </div>
 <div class="section" id="for-linux-on-linux">
-<h3>For Linux on Linux<a class="headerlink" href="#for-linux-on-linux" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir build
+<span id="host-linux-on-linux"></span><h3>For Linux on Linux<a class="headerlink" href="#for-linux-on-linux" title="Permalink to this headline">¶</a></h3>
+<p>Make a <code class="docutils literal notranslate"><span class="pre">host/build</span></code> direstory, then run <code class="docutils literal notranslate"><span class="pre">cmake</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> host
+mkdir build
 <span class="nb">cd</span> build
 cmake ..
 make
@@ -118,8 +125,11 @@ make
 </div>
 </div>
 <div class="section" id="for-windows-cross-compiling-on-linux">
-<h3>For Windows cross compiling on Linux<a class="headerlink" href="#for-windows-cross-compiling-on-linux" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir build
+<span id="host-win-cross-on-linux"></span><h3>For Windows cross compiling on Linux<a class="headerlink" href="#for-windows-cross-compiling-on-linux" title="Permalink to this headline">¶</a></h3>
+<p>Like <a class="reference internal" href="#host-linux-on-linux"><span class="std std-ref">For Linux on Linux</span></a>, but specifying the mingw64 toolchain in cmake
+for building.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> host
+mkdir build
 <span class="nb">cd</span> build
 cmake -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>../toolchain-mingw64.cmake ..
 make
@@ -129,12 +139,25 @@ make
 </div>
 <div class="section" id="building-the-windows-installer">
 <h2>Building the Windows installer<a class="headerlink" href="#building-the-windows-installer" title="Permalink to this headline">¶</a></h2>
-<p>Install NSIS compiler Build the host program, see above sections. Build
-installer with <code class="docutils literal notranslate"><span class="pre">makensis</span> <span class="pre">platform/Windows/installer.nsi</span></code> The resulting
-installer will be at <code class="docutils literal notranslate"><span class="pre">platform/Windows/looking-glass-host-setup.exe</span></code></p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#host-win-cross-on-linux"><span class="std std-ref">Build</span></a> the host for Linux.</p></li>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">nsis</span></code></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install nsis
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">makensis</span></code> to build the installer.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> host/build/platform/Windows
+makensis installer.nsi
+</pre></div>
+</div>
+<p id="host-questions">This will build <code class="docutils literal notranslate"><span class="pre">looking-glass-host-setup.exe</span></code> under
+<code class="docutils literal notranslate"><span class="pre">host/build/platform/Windows/looking-glass-host-setup.exe</span></code></p>
 </div>
 <div class="section" id="questions-and-answers">
-<span id="host-questions"></span><h2>Questions and Answers<a class="headerlink" href="#questions-and-answers" title="Permalink to this headline">¶</a></h2>
+<h2>Questions and Answers<a class="headerlink" href="#questions-and-answers" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="where-is-the-log">
 <h3>Where is the log?<a class="headerlink" href="#where-is-the-log" title="Permalink to this headline">¶</a></h3>
 <p>The log file for the host application is located at:</p>
