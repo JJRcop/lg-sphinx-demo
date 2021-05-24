@@ -189,7 +189,8 @@ to <code class="docutils literal notranslate"><span class="pre">static_size_mb</
 <code class="docutils literal notranslate"><span class="pre">&lt;domain&gt;</span></code>.</p>
 <p>On certain distros, running libvirt this way poses issues with apparmor
 and cgroups.</p>
-<p>For apparmor, in <code class="docutils literal notranslate"><span class="pre">/etc/apparmor.d/abstractions/libvirt-qemu</span></code>, append:</p>
+<p>For apparmor, create <code class="docutils literal notranslate"><span class="pre">/etc/apparmor.d/local/abstractions/libvirt-qemu</span></code> if
+it doesn’t exist, and add the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Looking Glass</span>
 <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">kvmfr0</span> <span class="n">rw</span><span class="p">,</span>
 </pre></div>
