@@ -15,7 +15,7 @@
     <link rel="shortcut icon" href="../_static/icon.ico"/>
     <link rel="index" title="Index" href="../genindex/" />
     <link rel="search" title="Search" href="../search/" />
-    <link rel="next" title="Troubleshooting" href="../troubleshooting/" />
+    <link rel="next" title="Building" href="../build/" />
     <link rel="prev" title="Looking Glass B4 documentation" href="../" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -44,11 +44,12 @@
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#looking-glass-client">Looking Glass Client</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#looking-glass-service-windows">Looking Glass Service (Windows)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#client">Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#host">Host</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../build/">Building</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../obs/">OBS plugin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/">Kernel Module</a></li>
@@ -64,7 +65,7 @@
 <ul>
   <li><a href="../">Documentation overview</a><ul>
       <li>Previous: <a href="../" title="previous chapter">Looking Glass B4 documentation</a></li>
-      <li>Next: <a href="../troubleshooting/" title="next chapter">Troubleshooting</a></li>
+      <li>Next: <a href="../build/" title="next chapter">Building</a></li>
   </ul></li>
 </ul>
 </div>
@@ -85,115 +86,17 @@
           <div class="body" role="main">
             
   <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="looking-glass-client">
-<span id="id1"></span><h2>Looking Glass Client<a class="headerlink" href="#looking-glass-client" title="Permalink to this headline">¶</a></h2>
-<p>This guide will step you through building the looking glass client from
-source, before you attempt to do this you should have a basic
-understanding of how to use the shell.</p>
-<div class="section" id="building-the-application">
-<span id="id2"></span><h3>Building the Application<a class="headerlink" href="#building-the-application" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="installing-build-dependencies">
-<span id="id3"></span><h4>Installing Build Dependencies<a class="headerlink" href="#installing-build-dependencies" title="Permalink to this headline">¶</a></h4>
-<p>These required libraries and tools should be installed first.</p>
-<div class="section" id="required-dependencies">
-<span id="id4"></span><h5>Required Dependencies<a class="headerlink" href="#required-dependencies" title="Permalink to this headline">¶</a></h5>
-<ul class="simple">
-<li><p>cmake</p></li>
-<li><p>gcc | clang</p></li>
-<li><p>fonts-freefont-ttf</p></li>
-<li><p>libegl-dev</p></li>
-<li><p>libgl-dev</p></li>
-<li><p>libfontconfig1-dev</p></li>
-<li><p>libgmp-dev</p></li>
-<li><p>libsdl2-dev</p></li>
-<li><p>libsdl2-ttf-dev</p></li>
-<li><p>libspice-protocol-dev</p></li>
-<li><p>make</p></li>
-<li><p>nettle-dev</p></li>
-<li><p>pkg-config</p></li>
-</ul>
-<div class="section" id="may-be-disabled">
-<span id="id5"></span><h6>May be disabled<a class="headerlink" href="#may-be-disabled" title="Permalink to this headline">¶</a></h6>
-<p>These dependencies are required by default, but may be omitted if their
-feature is disabled when running <a class="reference internal" href="#client-building"><span class="std std-ref">cmake</span></a>.</p>
-<ul class="simple">
-<li><p>Disable with <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DENABLE_BACKTRACE=no</span></code></p>
-<ul>
-<li><p>binutils-dev</p></li>
-</ul>
-</li>
-<li><p>Disable with <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DENABLE_X11=no</span></code></p>
-<ul>
-<li><p>libx11-dev</p></li>
-<li><p>libxfixes-dev</p></li>
-<li><p>libxi-dev</p></li>
-<li><p>libxss-dev</p></li>
-</ul>
-</li>
-<li><p>Disable with <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DENABLE_WAYLAND=no</span></code></p>
-<ul>
-<li><p>libwayland-bin</p></li>
-<li><p>libwayland-dev</p></li>
-<li><p>wayland-protocols</p></li>
-</ul>
-</li>
-</ul>
-<p>You can fetch these dependencies on Debian systems with the following command:</p>
-<p><code class="docutils literal notranslate"><span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">binutils-dev</span> <span class="pre">cmake</span> <span class="pre">fonts-freefont-ttf</span> <span class="pre">libfontconfig1-dev</span>
-<span class="pre">libsdl2-dev</span> <span class="pre">libsdl2-ttf-dev</span> <span class="pre">libspice-protocol-dev</span> <span class="pre">libx11-dev</span> <span class="pre">nettle-dev</span>
-<span class="pre">wayland-protocols</span></code></p>
-</div>
-</div>
-</div>
-<div class="section" id="downloading">
-<h4>Downloading<a class="headerlink" href="#downloading" title="Permalink to this headline">¶</a></h4>
-<p>Either visit the Looking Glass website’s <a class="reference external" href="https://looking-glass.io/downloads">Download
-Page</a>, or pull the lastest <strong>bleeding-edge
-version</strong> with <code class="docutils literal notranslate"><span class="pre">git</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/gnif/LookingGlass.git
-</pre></div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Please only clone from Git if you’re a developer, and know what you’re
-doing. Looking Glass requires git submodules that must be setup and updated
-when building. Source code downloads from the website come bundled with the
-necessary submodules.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>When using the latest bleeding-edge client version,
-you <em>MUST</em> download and install the corresponding host application.</p>
-</div>
-</div>
-<div class="section" id="building">
-<span id="client-building"></span><h4>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h4>
-<p>If you’ve downloaded the source code as a zip file, simply unzip and cd into the
-new directory. If you’ve cloned the repo with <code class="docutils literal notranslate"><span class="pre">git</span></code>, then <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the
-‘LookingGlass’ directory.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir client/build
-<span class="nb">cd</span> client/build
-cmake ../
-make
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The most common compile error is related to backtrace support. This can be
-disabled by adding the following option to the cmake command:
-<strong>-DENABLE_BACKTRACE=0</strong>, however, if you disable this and need support for a
-crash please be sure to use gdb to obtain a backtrace manually or there is
-nothing that can be done to help you.</p>
-</div>
-<p>Should this all go well, you will build the <strong>looking-glass-client</strong>.
-Before you run the client, you will first need
-to configure either libvirt, or QEMU (whichever you prefer) then set
-up the <strong>looking-glass-host</strong> service in your VM.</p>
-</div>
-</div>
+<span id="installing"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="client">
+<span id="client-install"></span><h2>Client<a class="headerlink" href="#client" title="Permalink to this headline">¶</a></h2>
+<p>The Looking Glass Client recieves frames from the <a class="reference internal" href="#host-install"><span class="std std-ref">Host</span></a> to
+display on your screen. It also handles input, and can optionally share the
+system clipboard with your guest OS through Spice.</p>
+<p>First you must build the client from source code, see <a class="reference internal" href="../build/#building"><span class="std std-ref">Building</span></a>.</p>
+<p>After this, you may move the client into a directory in your path, some may
+allow <code class="docutils literal notranslate"><span class="pre">~/.local/bin</span></code>, or run it directly from the build directory.</p>
 <div class="section" id="libvirt-configuration">
-<span id="id6"></span><h3>libvirt Configuration<a class="headerlink" href="#libvirt-configuration" title="Permalink to this headline">¶</a></h3>
+<span id="client-libvirt-configuration"></span><h3>libvirt Configuration<a class="headerlink" href="#libvirt-configuration" title="Permalink to this headline">¶</a></h3>
 <p>This article assumes you already have a fully functional libvirt domain with
 PCI passthrough working on a dedicated monitor.</p>
 <p>If you use virt-manager, this guide also applies to you, since virt-manager uses
@@ -209,9 +112,9 @@ your virtual machine.</p>
 </pre></div>
 </div>
 <p>The memory size (show as 32 in the example above) may need to be
-adjusted as per the <a class="reference internal" href="#determining-memory"><span class="std std-ref">Determining Memory</span></a> section.</p>
+adjusted as per the <a class="reference internal" href="#client-determining-memory"><span class="std std-ref">Determining Memory</span></a> section.</p>
 <div class="section" id="spice-server">
-<span id="id7"></span><h4>Spice Server<a class="headerlink" href="#spice-server" title="Permalink to this headline">¶</a></h4>
+<span id="client-spice-server"></span><h4>Spice Server<a class="headerlink" href="#spice-server" title="Permalink to this headline">¶</a></h4>
 <p>If you would like to use Spice to give you keyboard and mouse input
 along with clipboard sync support, make sure you have a
 <code class="docutils literal notranslate"><span class="pre">&lt;graphics</span> <span class="pre">type='spice'&gt;</span></code> device, then:</p>
@@ -239,7 +142,7 @@ to be installed in the guest</p></li>
 <a class="reference internal" href="../faq/#how-to-enable-clipboard-synchronization-via-spice"><span class="std std-ref">How to enable clipboard synchronization via SPICE</span></a></p>
 </div>
 <div class="section" id="apparmor">
-<h4>AppArmor<a class="headerlink" href="#apparmor" title="Permalink to this headline">¶</a></h4>
+<span id="client-apparmor"></span><h4>AppArmor<a class="headerlink" href="#apparmor" title="Permalink to this headline">¶</a></h4>
 <p>For libvirt versions before <strong>5.10.0</strong>, if you are using AppArmor, you
 need to add permissions for QEMU to access the shared memory file. This
 can be done by adding the following to
@@ -248,7 +151,7 @@ can be done by adding the following to
 </div>
 </div>
 <div class="section" id="qemu-commands">
-<span id="id8"></span><h3>Qemu Commands<a class="headerlink" href="#qemu-commands" title="Permalink to this headline">¶</a></h3>
+<span id="client-qemu-commands"></span><h3>Qemu Commands<a class="headerlink" href="#qemu-commands" title="Permalink to this headline">¶</a></h3>
 <p><strong>If you are using libvirt/virt-manager, then this does not apply to you.</strong></p>
 <p>Add the following to the commands to your QEMU command line, adjusting
 the <code class="docutils literal notranslate"><span class="pre">bus</span></code> parameter to suit your particular configuration:</p>
@@ -257,10 +160,10 @@ the <code class="docutils literal notranslate"><span class="pre">bus</span></cod
 </pre></div>
 </div>
 <p>The memory size (shown as 32M in the example above) may need to be
-adjusted as per <a class="reference internal" href="#determining-memory"><span class="std std-ref">Determining Memory</span></a> section.</p>
+adjusted as per <a class="reference internal" href="#client-determining-memory"><span class="std std-ref">Determining Memory</span></a> section.</p>
 </div>
 <div class="section" id="determining-memory">
-<span id="id9"></span><h3>Determining Memory<a class="headerlink" href="#determining-memory" title="Permalink to this headline">¶</a></h3>
+<span id="client-determining-memory"></span><h3>Determining Memory<a class="headerlink" href="#determining-memory" title="Permalink to this headline">¶</a></h3>
 <p>You will need to adjust the memory size to be suitable for
 your desired maximum resolution, with the following formula:</p>
 <p><code class="docutils literal notranslate"><span class="pre">width</span> <span class="pre">x</span> <span class="pre">height</span> <span class="pre">x</span> <span class="pre">4</span> <span class="pre">x</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">total</span> <span class="pre">bytes</span></code></p>
@@ -272,7 +175,7 @@ your desired maximum resolution, with the following formula:</p>
 provided example is 32MB.</p>
 </div>
 <div class="section" id="shared-memory-file-permissions">
-<span id="id10"></span><h3>Shared Memory File Permissions<a class="headerlink" href="#shared-memory-file-permissions" title="Permalink to this headline">¶</a></h3>
+<span id="client-shmfile-permissions"></span><h3>Shared Memory File Permissions<a class="headerlink" href="#shared-memory-file-permissions" title="Permalink to this headline">¶</a></h3>
 <p>The shared memory file used by IVSHMEM is found in <code class="docutils literal notranslate"><span class="pre">/dev/shm/looking-glass</span></code>.
 By default, it is owned by QEMU, and does not give read/write permissions to
 your user, which are required for Looking Glass to run properly.</p>
@@ -288,77 +191,6 @@ with the following:</p>
 </div>
 <p>Change <code class="docutils literal notranslate"><span class="pre">UID</span></code> to the user name you will run Looking Glass with, usually your
 own.</p>
-</div>
-</div>
-<div class="section" id="looking-glass-service-windows">
-<span id="id11"></span><h2>Looking Glass Service (Windows)<a class="headerlink" href="#looking-glass-service-windows" title="Permalink to this headline">¶</a></h2>
-<p>You must first run the Windows VM with the changes noted above in either
-the <a class="reference internal" href="#libvirt-configuration"><span class="std std-ref">libvirt Configuration</span></a> or <a class="reference internal" href="#qemu-commands"><span class="std std-ref">Qemu Commands</span></a> sections.</p>
-<div class="section" id="installing-the-ivshmem-driver">
-<span id="id12"></span><h3>Installing the IVSHMEM Driver<a class="headerlink" href="#installing-the-ivshmem-driver" title="Permalink to this headline">¶</a></h3>
-<p>Windows will not prompt for a driver for the IVSHMEM device, instead, it
-will use a default null (do nothing) driver for the device. To install
-the IVSHMEM driver you will need to go into the device manager and
-update the driver for the device “PCI standard RAM Controller” under the
-“System Devices” node.</p>
-<p>A signed Windows 10 driver can be obtained from Red Hat for this device
-from the below address:</p>
-<p><a class="reference external" href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/upstream-virtio/">https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/upstream-virtio/</a></p>
-<p>Please note that you must obtain version 0.1.161 or later.</p>
-<p>If you encounter warnings or errors about driver signatures, ensure secure boot
-is turned off in the bios/uefi settings of your virtual machine.</p>
-<div class="section" id="a-note-about-ivshmem-and-scream-audio">
-<span id="id13"></span><h4>A note about IVSHMEM and Scream Audio<a class="headerlink" href="#a-note-about-ivshmem-and-scream-audio" title="Permalink to this headline">¶</a></h4>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Using IVSHMEM with Scream may interfere with Looking Glass, as they may try
-to use the same device.</p>
-</div>
-<p>Please do not use the IVSHMEM plugin for Scream.
-Use the default network transfer method. The IVSHMEM method induces
-additional latency that is built into its implementation. When using
-VirtIO for a network device the VM is already using a highly optimized
-memory copy anyway so there is no need to make another one.</p>
-<p>If you insist on using IVSHMEM for Scream—despite its inferiority to the
-default network implementation—the Windows Host Application can be told
-what device to use. Create a <code class="docutils literal notranslate"><span class="pre">looking-glass-host.ini</span></code> file in the same
-directory as the looking-glass-host.exe file. In it, you can use the
-<code class="docutils literal notranslate"><span class="pre">os:shmDevice</span></code> option like so:</p>
-<div class="highlight-INI notranslate"><div class="highlight"><pre><span></span><span class="k">[os]</span>
-<span class="na">shmDevice</span><span class="o">=</span><span class="s">1</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="using-the-windows-host-application">
-<span id="id14"></span><h3>Using the Windows Host Application<a class="headerlink" href="#using-the-windows-host-application" title="Permalink to this headline">¶</a></h3>
-<p>Start by downloading the correct version for your release from
-<a class="reference external" href="https://looking-glass.io/downloads">https://looking-glass.io/downloads</a>. You can either choose between
-<strong>Official Releases</strong>, which are stable; or <strong>Release Candidates</strong>, new versions
-about to be stable, but haven’t passed validation.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If your <strong>looking-glass-client</strong> was created by building from the <strong>master
-branch</strong> you have to pick the <strong>Bleeding Edge</strong> version.</p>
-</div>
-<p>Next, extract the zip archive using the commit hash for the password.
-Then, run the <code class="docutils literal notranslate"><span class="pre">looking-glass-host-setup.exe</span></code> installer and install the host.
-By default, the installer will install a service that
-automatically starts the host application at boot. The installer can
-also be installed in silent mode with the <code class="docutils literal notranslate"><span class="pre">/S</span></code> switch. You can find other
-command line options with the <code class="docutils literal notranslate"><span class="pre">/h</span></code> switch.</p>
-<p>The windows host application captures the windows desktop and stuffs the
-frames into the shared memory via the shared memory virtual device,
-without this Looking Glass will not function. It is critical that the
-version of the host application matches the version of the client
-application, as differing versions can be, and usually are,
-incompatible.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>As of 2020-10-23, Microsoft Defender is known to mark the
-Looking-Glass host executable as a virus and in some cases will
-automatically delete the file.</p>
-</div>
 </div>
 </div>
 <div class="section" id="usage">
@@ -948,6 +780,65 @@ files.</p>
 </tbody>
 </table>
 </div></blockquote>
+</div>
+</div>
+<div class="section" id="host">
+<span id="host-install"></span><h2>Host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h2>
+<p>The Looking Glass Host captures frames from the guest OS using a capture API,
+and sends these frames to the <a class="reference internal" href="#client-install"><span class="std std-ref">Client</span></a>, be it on the host OS
+(hypervisor) or another Virtual Machine, through a low-latency transfer
+protocol over shared memory.</p>
+<p>You can get the host program in two ways:</p>
+<ul class="simple">
+<li><p>Download a pre-built binary from <a class="reference external" href="https://looking-glass.io/downloads">https://looking-glass.io/downloads</a>
+(<strong>recommended</strong>)</p></li>
+<li><p>Download the source code as described in <a class="reference internal" href="../build/#building"><span class="std std-ref">Building</span></a>, then
+<a class="reference internal" href="../build/#host-building"><span class="std std-ref">build the host</span></a>.</p></li>
+</ul>
+<div class="section" id="windows">
+<span id="host-install-windows"></span><h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>To begin, you must first run the Windows VM with the changes noted above in
+either the <a class="reference internal" href="#client-libvirt-configuration"><span class="std std-ref">libvirt Configuration</span></a> or <a class="reference internal" href="#client-qemu-commands"><span class="std std-ref">Qemu Commands</span></a>
+sections.</p>
+<div class="section" id="installing-the-ivshmem-driver">
+<span id="id1"></span><h4>Installing the IVSHMEM Driver<a class="headerlink" href="#installing-the-ivshmem-driver" title="Permalink to this headline">¶</a></h4>
+<p>Windows will not prompt for a driver for the IVSHMEM device, instead, it
+will use a default null (do nothing) driver for the device. To install
+the IVSHMEM driver you will need to go into the device manager and
+update the driver for the device “PCI standard RAM Controller” under the
+“System Devices” node.</p>
+<p>A signed Windows 10 driver can be obtained from Red Hat for this device
+from the below address:</p>
+<p><a class="reference external" href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/upstream-virtio/">https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/upstream-virtio/</a></p>
+<p>Please note that you must obtain version 0.1.161 or later.</p>
+<p>If you encounter warnings or errors about driver signatures, ensure secure boot
+is turned off in the bios/uefi settings of your virtual machine.</p>
+</div>
+<div class="section" id="installing-the-looking-glass-service">
+<span id="host-install-service"></span><h4>Installing the Looking Glass Service<a class="headerlink" href="#installing-the-looking-glass-service" title="Permalink to this headline">¶</a></h4>
+<p>After installing your IVSHMEM driver, we can now install the Looking Glass Host
+onto our Windows Virtual Machine.</p>
+<ol class="arabic simple">
+<li><p>First, run <code class="docutils literal notranslate"><span class="pre">looking-glass-host-setup.exe</span></code> as an administrator
+(<a class="reference internal" href="../faq/#faq-host-admin-privs"><span class="std std-ref">Why?</span></a>)</p></li>
+<li><p>You will be greeted by an intro screen. Press <code class="docutils literal notranslate"><span class="pre">Next</span></code> to continue.</p></li>
+<li><p>You are presented with the GPLv2 license. Please read and agree to the
+license by pressing <code class="docutils literal notranslate"><span class="pre">Agree</span></code>.</p></li>
+<li><p>You can change the install path if you wish, otherwise press <code class="docutils literal notranslate"><span class="pre">Next</span></code> to
+continue.</p></li>
+<li><p>You may enable or disable options on this screen to configure the
+installation. The default values are recommended for most users.
+Press <code class="docutils literal notranslate"><span class="pre">Install</span></code> to begin installation.</p></li>
+<li><p>After a few moments, installation will complete, and you will have a
+running instance of Looking Glass. If you experience failures, you can
+see them in the install log appearing in the middle of the window.</p></li>
+<li><p>Press <code class="docutils literal notranslate"><span class="pre">Close</span></code> to exit the installer.</p></li>
+</ol>
+<p>Command line users can run <code class="docutils literal notranslate"><span class="pre">looking-glass-host-setup.exe</span> <span class="pre">/S</span></code> to execute a
+silent install with default options selected. Further configuration from the
+command line can be done with flags. You can list all available flags by
+running <code class="docutils literal notranslate"><span class="pre">looking-glass-host-setup.exe</span> <span class="pre">/?</span></code>.</p>
+</div>
 </div>
 </div>
 </div>

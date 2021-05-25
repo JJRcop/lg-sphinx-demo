@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Building &#8212; Looking Glass B4 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/icon.ico"/>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Troubleshooting" href="../troubleshooting/" />
+    <link rel="prev" title="Installation" href="../install/" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../">
+    <img class="logo" src="../_static/icon-128x128.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install/">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#downloading">Downloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#client">Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#host">Host</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obs/">OBS plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/">Kernel Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tech_faq/">Technical FAQ</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../credits/">Looking Glass team</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../">Documentation overview</a><ul>
+      <li>Previous: <a href="../install/" title="previous chapter">Installation</a></li>
+      <li>Next: <a href="../troubleshooting/" title="next chapter">Troubleshooting</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="building">
+<span id="id1"></span><h1>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h1>
+<p>The following instructions will help you build Looking Glass for yourself
+from source code. Before you attempt to do this, you should have a basic
+understanding of how to use the shell.</p>
+<div class="section" id="downloading">
+<span id="download-source"></span><h2>Downloading<a class="headerlink" href="#downloading" title="Permalink to this headline">¶</a></h2>
+<p>Either visit the Looking Glass website’s <a class="reference external" href="https://looking-glass.io/downloads">Download
+Page</a>, or pull the lastest <strong>bleeding-edge
+version</strong> with <code class="docutils literal notranslate"><span class="pre">git</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/gnif/LookingGlass.git
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please only clone from Git if you’re a developer, and know what you’re
+doing. Looking Glass requires git submodules that must be setup and updated
+when building. Source code downloads from the website come bundled with the
+necessary submodules.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using the latest bleeding-edge client version,
+you <em>MUST</em> download and install the corresponding host application.</p>
+</div>
+</div>
+<div class="section" id="client">
+<span id="build-client-section"></span><h2>Client<a class="headerlink" href="#client" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installing-build-dependencies">
+<span id="id2"></span><h3>Installing Build Dependencies<a class="headerlink" href="#installing-build-dependencies" title="Permalink to this headline">¶</a></h3>
+<p>These required libraries and tools should be installed first.</p>
+<div class="section" id="required-dependencies">
+<span id="client-dependencies"></span><h4>Required Dependencies<a class="headerlink" href="#required-dependencies" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>cmake</p></li>
+<li><p>gcc | clang</p></li>
+<li><p>fonts-freefont-ttf</p></li>
+<li><p>libegl-dev</p></li>
+<li><p>libgl-dev</p></li>
+<li><p>libfontconfig1-dev</p></li>
+<li><p>libgmp-dev</p></li>
+<li><p>libsdl2-dev</p></li>
+<li><p>libsdl2-ttf-dev</p></li>
+<li><p>libspice-protocol-dev</p></li>
+<li><p>make</p></li>
+<li><p>nettle-dev</p></li>
+<li><p>pkg-config</p></li>
+</ul>
+<div class="section" id="may-be-disabled">
+<span id="id3"></span><h5>May be disabled<a class="headerlink" href="#may-be-disabled" title="Permalink to this headline">¶</a></h5>
+<p>These dependencies are required by default, but may be omitted if their
+feature is disabled when running <a class="reference internal" href="#client-building"><span class="std std-ref">cmake</span></a>.</p>
+<ul class="simple">
+<li><p>Disable with <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DENABLE_BACKTRACE=no</span></code></p>
+<ul>
+<li><p>binutils-dev</p></li>
+</ul>
+</li>
+<li><p>Disable with <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DENABLE_X11=no</span></code></p>
+<ul>
+<li><p>libx11-dev</p></li>
+<li><p>libxfixes-dev</p></li>
+<li><p>libxi-dev</p></li>
+<li><p>libxss-dev</p></li>
+</ul>
+</li>
+<li><p>Disable with <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DENABLE_WAYLAND=no</span></code></p>
+<ul>
+<li><p>libwayland-bin</p></li>
+<li><p>libwayland-dev</p></li>
+<li><p>wayland-protocols</p></li>
+</ul>
+</li>
+</ul>
+<p>You can fetch these dependencies on Debian systems with the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">binutils-dev</span> <span class="pre">cmake</span> <span class="pre">fonts-freefont-ttf</span> <span class="pre">libfontconfig1-dev</span>
+<span class="pre">libsdl2-dev</span> <span class="pre">libsdl2-ttf-dev</span> <span class="pre">libspice-protocol-dev</span> <span class="pre">libx11-dev</span> <span class="pre">nettle-dev</span>
+<span class="pre">wayland-protocols</span></code></p>
+</div>
+</div>
+</div>
+<div class="section" id="client-building">
+<span id="id4"></span><h3>Building<a class="headerlink" href="#client-building" title="Permalink to this headline">¶</a></h3>
+<p>If you’ve downloaded the source code as a zip file, simply unzip and cd into the
+new directory. If you’ve cloned the repo with <code class="docutils literal notranslate"><span class="pre">git</span></code>, then <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the
+‘LookingGlass’ directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir client/build
+<span class="nb">cd</span> client/build
+cmake ../
+make
+</pre></div>
+</div>
+<p>Should this all go well, you will build the <strong>looking-glass-client</strong>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../install/#client-install"><span class="std std-ref">Installing the Client</span></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The most common compile error is related to backtrace support. This can be
+disabled by adding the following option to the cmake command:
+<strong>-DENABLE_BACKTRACE=0</strong>, however, if you disable this and need support for a
+crash please be sure to use gdb to obtain a backtrace manually or there is
+nothing that can be done to help you.</p>
+</div>
+</div>
+</div>
+<div class="section" id="host">
+<span id="host-building"></span><h2>Host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h2>
+<p>These instructions help you build the host yourself from the <a class="reference internal" href="#download-source"><span class="std std-ref">downloaded
+source code</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Building the host from source code is not recommended for most purposes,
+and should only be attempted by users who are prepared to handle issues
+on their own. Please download the pre-built binary installers from
+<a class="reference external" href="https://looking-glass.io/downloads">https://looking-glass.io/downloads</a> for stability, and increased support.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The pre-built binaries also include NvFBC support built in, which is
+only available to current Nvidia SDK license holders, and cannot
+be enabled when building the host without also having a license.</p>
+</div>
+<div class="section" id="for-windows-on-windows">
+<span id="host-win-on-win"></span><h3>For Windows on Windows<a class="headerlink" href="#for-windows-on-windows" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Download and install msys2 x86_64 from
+<a class="reference external" href="http://www.msys2.org/">http://www.msys2.org/</a> following the setup
+instructions provided</p></li>
+<li><p>Run the MSYS2 shell.</p></li>
+<li><p>Download build dependencies with pacman</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pacman -Fy
+pacman -Sy git make mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Checkout the project</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/gnif/LookingGlass.git
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Configure the project and build it</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir LookingGlass/host/build
+<span class="nb">cd</span> LookingGlass/host/build
+cmake -G <span class="s2">&quot;MSYS Makefiles&quot;</span> ..
+make
+</pre></div>
+</div>
+</div>
+<div class="section" id="for-linux-on-linux">
+<span id="host-linux-on-linux"></span><h3>For Linux on Linux<a class="headerlink" href="#for-linux-on-linux" title="Permalink to this headline">¶</a></h3>
+<p>Make a <code class="docutils literal notranslate"><span class="pre">host/build</span></code> direstory, then run <code class="docutils literal notranslate"><span class="pre">cmake</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> host
+mkdir build
+<span class="nb">cd</span> build
+cmake ..
+make
+</pre></div>
+</div>
+</div>
+<div class="section" id="for-windows-cross-compiling-on-linux">
+<span id="host-win-cross-on-linux"></span><h3>For Windows cross compiling on Linux<a class="headerlink" href="#for-windows-cross-compiling-on-linux" title="Permalink to this headline">¶</a></h3>
+<p>Like <a class="reference internal" href="#host-linux-on-linux"><span class="std std-ref">For Linux on Linux</span></a>, but specifying the mingw64 toolchain in cmake
+for building.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> host
+mkdir build
+<span class="nb">cd</span> build
+cmake -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>../toolchain-mingw64.cmake ..
+make
+</pre></div>
+</div>
+</div>
+<div class="section" id="building-the-windows-installer">
+<span id="host-build-installer"></span><h3>Building the Windows installer<a class="headerlink" href="#building-the-windows-installer" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#host-win-cross-on-linux"><span class="std std-ref">Build</span></a> the host for Linux.</p></li>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">nsis</span></code></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install nsis
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">makensis</span></code> to build the installer.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> host/build/platform/Windows
+makensis installer.nsi
+</pre></div>
+</div>
+<p id="host-questions">This will build <code class="docutils literal notranslate"><span class="pre">looking-glass-host-setup.exe</span></code> under
+<code class="docutils literal notranslate"><span class="pre">host/build/platform/Windows/looking-glass-host-setup.exe</span></code></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../install/#host-install"><span class="std std-ref">Installing the Host</span></a></p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021, Looking Glass team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/build.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
